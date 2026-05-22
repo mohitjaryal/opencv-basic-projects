@@ -2,13 +2,21 @@
 
 A collection of real-time **Computer Vision projects** built with Python, OpenCV, and MediaPipe — where your camera becomes the controller.
 
+![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green?logo=opencv)
+![MediaPipe](https://img.shields.io/badge/MediaPipe-Google-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 ---
 
-## 🔊 Hand Gesture Volume Control
+## 📁 Projects
+
+### 🔊 1. Hand Gesture Volume Control
+> `volume_control.py`
 
 Control your system volume using just your hand — no keyboard, no mouse needed.
 
-The project uses **MediaPipe** to detect 21 hand landmarks in real time via webcam. It tracks the distance between your **thumb tip** and **index finger tip** and maps that to a volume command — bring fingers close to decrease volume, spread them apart to increase it. A 0.5s cooldown prevents rapid unintended jumps.
+Uses **MediaPipe** to detect 21 hand landmarks in real time. Tracks the distance between your **thumb tip** and **index finger tip** and maps it to system volume — bring fingers close to decrease, spread them to increase. A 0.5s cooldown prevents rapid unintended jumps.
 
 | Gesture | Action |
 |---|---|
@@ -19,15 +27,63 @@ The project uses **MediaPipe** to detect 21 hand landmarks in real time via webc
 
 ---
 
-## 📁 Folder Structure
+### 🖱️ 2. Hand Gesture Mouse Control
+> `mouse_control.py`
+
+Control your mouse cursor and clicks using hand gestures — completely touchless.
+
+Uses **MediaPipe** hand tracking + **PyAutoGUI** to map your hand position to screen coordinates in real time.
+
+| Gesture | Action |
+|---|---|
+| ☝️ Index finger up | Move cursor |
+| 🤏 Pinch (thumb + index) | Left click |
+| ✌️ Two fingers up | Right click / Scroll |
+
+---
+
+### 😊 3. Face, Eye & Smile Detection
+> `face_eye_smile.py`
+
+Real-time detection of faces, eyes, and smiles using OpenCV's Haar Cascade classifiers.
+
+Draws bounding boxes around detected faces and overlays markers for eyes and smiles — great for understanding classical CV before diving into deep learning.
+
+| Detected | Highlight |
+|---|---|
+| 👤 Face | Blue rectangle |
+| 👁️ Eyes | Green rectangle |
+| 😄 Smile | Red rectangle |
+
+---
+
+### 🚨 4. Motion Detector
+> `motion_detector.py`
+
+A lightweight real-time motion detector using frame differencing.
+
+Compares consecutive webcam frames to detect movement — highlights motion zones with bounding boxes and optionally triggers an alert.
+
+| Feature | Detail |
+|---|---|
+| 📸 Frame differencing | Detects pixel-level changes |
+| 🟥 Bounding box | Highlights motion regions |
+| ⏱️ Sensitivity control | Adjustable threshold |
+
+---
+
+## 📂 Folder Structure
 
 ```
 opencv-basic-projects/
 │
 ├── volume_control.py      # Hand gesture volume controller
-├── main.py                # Entry point
+├── mouse_control.py       # Hand gesture mouse controller
+├── face_eye_smile.py      # Face, eye & smile detector
+├── motion_detector.py     # Real-time motion detector
 ├── requirements.txt       # Project dependencies
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -35,17 +91,13 @@ opencv-basic-projects/
 
 ## 🛠️ Tech Stack
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green?logo=opencv)
-![MediaPipe](https://img.shields.io/badge/MediaPipe-Google-orange)
-
 | Library | Purpose |
 |---|---|
 | `opencv-python` | Webcam capture & real-time video display |
-| `mediapipe` | Hand landmark detection (21 points) |
-| `math` | Euclidean distance calculation |
-| `os` | System volume commands |
-| `time` | Cooldown between volume changes |
+| `mediapipe` | Hand & face landmark detection |
+| `pyautogui` | Mouse and keyboard control |
+| `math` | Euclidean distance calculations |
+| `time` | Cooldown & frame timing |
 
 ---
 
@@ -62,12 +114,18 @@ cd opencv-basic-projects
 pip install -r requirements.txt
 ```
 
-**3. Run the project**
+**3. Run any project**
 ```bash
 python volume_control.py
+# or
+python mouse_control.py
+# or
+python face_eye_smile.py
+# or
+python motion_detector.py
 ```
 
-> Press **`x`** to quit the webcam window.
+> Press **`x`** or **`q`** to quit the webcam window.
 
 ---
 
@@ -76,6 +134,7 @@ python volume_control.py
 ```
 opencv-python
 mediapipe
+pyautogui
 ```
 
 Install with:
@@ -98,6 +157,6 @@ pip install -r requirements.txt
 
 ---
 
-⭐ **If this repo helped you, consider giving it a star — it motivates me to keep learning and sharing!**
+⭐ **Star this repo if it helped you — it keeps me motivated to build and share more!**
 
-*Made by [Mohit Jaryal](https://mohitjaryal.online)*
+*Made with ❤️ by [Mohit Jaryal](https://mohitjaryal.online)*
