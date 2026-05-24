@@ -71,7 +71,24 @@ Compares consecutive webcam frames to detect movement — highlights motion zone
 | ⏱️ Sensitivity control | Adjustable threshold |
 
 ---
+Tumhara matlab hai — face detection wale project ke liye bhi aisa hi README section likhun? Jaise:
 
+---
+
+### 👤 5. Face Detection System
+> `face_detection.py`
+
+Detects faces, eyes in real-time using your webcam — completely automatic.
+Uses **OpenCV** Haar Cascades to detect and highlight faces and eyes with bounding boxes.
+
+| Feature | Detail |
+|---|---|
+| 👤 Face Detection | Green rectangle around face |
+| 👁️ Eye Detection | Blue rectangle around eyes |
+| 🔴 Label | "Face Detected" text above box |
+| ❌ Exit | Press `x` to quit |
+
+---
 ## 📂 Folder Structure
 
 ```
@@ -81,6 +98,7 @@ opencv-basic-projects/
 ├── mouse_control.py       # Hand gesture mouse controller
 ├── face_eye_smile.py      # Face, eye & smile detector
 ├── motion_detector.py     # Real-time motion detector
+├── face_detection.py      # Real-time face detector
 ├── requirements.txt       # Project dependencies
 ├── .gitignore
 ├── LICENSE
