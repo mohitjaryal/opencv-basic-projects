@@ -38,7 +38,6 @@ Uses **MediaPipe** hand tracking + **PyAutoGUI** to map your hand position to sc
 |---|---|
 | ☝️ Index finger up | Move cursor |
 | 🤏 Pinch (thumb + index) | Left click |
-| ✌️ Two fingers up | Right click / Scroll |
 
 ---
 
@@ -71,35 +70,53 @@ Compares consecutive webcam frames to detect movement — highlights motion zone
 | ⏱️ Sensitivity control | Adjustable threshold |
 
 ---
-Tumhara matlab hai — face detection wale project ke liye bhi aisa hi README section likhun? Jaise:
-
----
 
 ### 👤 5. Face Detection System
 > `face_detection.py`
 
-Detects faces, eyes in real-time using your webcam — completely automatic.
-Uses **OpenCV** Haar Cascades to detect and highlight faces and eyes with bounding boxes.
+Detects faces in real time using your webcam — completely automatic.
+
+Uses **OpenCV's Haar Cascade** classifier (`haarcascade_frontalface_default.xml`) to identify faces and draw bounding boxes with on-screen labels.
 
 | Feature | Detail |
 |---|---|
 | 👤 Face Detection | Green rectangle around face |
-| 👁️ Eye Detection | Blue rectangle around eyes |
 | 🔴 Label | "Face Detected" text above box |
+| ⚙️ Scale Factor | `1.2` — balanced speed & accuracy |
+| 👥 Min Neighbors | `5` — reduces false positives |
 | ❌ Exit | Press `x` to quit |
 
 ---
+
+### 🔵 6. Blue Color Detector
+> [`blue_color_detector.py`](https://github.com/mohitjaryal/opencv-basic-projects/blob/main/blue_color_detector.py)
+
+Detects and highlights **blue-colored objects** in your webcam feed in real time.
+
+Converts BGR frames to **HSV color space**, dynamically calculates the blue hue range using a helper function, and draws a **bounding box** around detected blue regions using PIL's `getbbox()`.
+
+| Feature | Detail |
+|---|---|
+| 🎨 Dynamic HSV Limits | `get_limits()` auto-calculates hue range for any color |
+| 🟦 Bounding Box | Green rectangle around detected blue object |
+| 🖼️ PIL Integration | Uses `Image.getbbox()` for precise region detection |
+| 🔵 Target Color | Blue — `BGR: [255, 0, 0]` |
+| ❌ Exit | Press `x` to quit |
+
+---
+
 ## 📂 Folder Structure
 
 ```
 opencv-basic-projects/
 │
-├── volume_control.py      # Hand gesture volume controller
-├── mouse_control.py       # Hand gesture mouse controller
-├── face_eye_smile.py      # Face, eye & smile detector
-├── motion_detector.py     # Real-time motion detector
-├── face_detection.py      # Real-time face detector
-├── requirements.txt       # Project dependencies
+├── volume_control.py        # Hand gesture volume controller
+├── mouse_control.py         # Hand gesture mouse controller
+├── face_eye_smile.py        # Face, eye & smile detector
+├── motion_detector.py       # Real-time motion detector
+├── face_detection.py        # Real-time face detector
+├── blue_color_detector.py   # Blue color object detector
+├── requirements.txt         # Project dependencies
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -141,6 +158,10 @@ python mouse_control.py
 python face_eye_smile.py
 # or
 python motion_detector.py
+# or
+python face_detection.py
+# or
+python blue_color_detector.py
 ```
 
 > Press **`x`** or **`q`** to quit the webcam window.
