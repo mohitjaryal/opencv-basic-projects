@@ -1,4 +1,4 @@
-# Color detection system using OpenCV, Python
+# Blue Color detection system using OpenCV, Python
 import cv2
 import numpy as np
 from  PIL import Image
@@ -42,8 +42,7 @@ while True:
     if bbox is not None:
         x1, y1, x2, y2 = bbox
         cv2.rectangle(frame,(x1,y1),(x2,y2),(0,255,0),5)
-    print(bbox)
-    cv2.imshow('Gray scale image',frame)
+    cv2.imshow('Blue Color Detector',frame)
     if cv2.waitKey(1) & 0xFF == ord('x'):
         break
 cap.release()
